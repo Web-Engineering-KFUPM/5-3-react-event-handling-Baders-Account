@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 
 export default function TaskApp() {
+  var text="";
+  var setText="";
   
-  const handleSubmit = () => {
+  [text, setText] = useState("");
+  
+  const handleSubmit = (props) => {
+    setText = props.text;
    
   };
 
@@ -23,14 +28,21 @@ export default function TaskApp() {
       <div className="inputRow">
         <input
           type="text"
-          placeholder="Type a task..."
-          className="input"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+
           // TODO: value={text}
           // TODO: onChange={(e) => setText(e.target.value)}
+          
+          
+          placeholder="Type a task..."
+          className="input"
+          
           onKeyDown={(e) => {
             if (e.key === "Enter") handleSubmit();
           }}
         />
+        <p>{text}</p>
         <button className="btn btn--primary" onClick={handleSubmit}>
           Submit
         </button>
