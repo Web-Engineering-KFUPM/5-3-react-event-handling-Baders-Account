@@ -2,23 +2,26 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 
 export default function TaskApp() {
+  let [tasks, setTasks] = useState([]);
+  let [text, setText] = useState("");
   
-  var [text, setText] = useState("");
-  var button = document.getElementsByClassName("btn btn--primary")
-  const handleSubmit = (props) => {
-    
-    setText = props.text;
+  const handleSubmit = () => {
+    const newTask = {id: Date.now(), text};
+    setTasks((tasks) => [...tasks,newTask]);
+    setText = "";
    
   };
 
   
   const handleDelete = (id) => {
     // TODO: filter tasks by id to remove the clicked one
+    setTasks((tasks)=> tasks.filter((t) => t.id !== id));
   };
 
   
   const handleClearAll = () => {
     // TODO: set tasks to empty array
+    setTasks([]);
   };
 
   return (
@@ -47,18 +50,22 @@ export default function TaskApp() {
           
           
         />
-        <p>{text}</p>
+        
+        
         
         
         
         <button className="btn btn--primary" onClick={handleSubmit}>
           Submit
         </button>
+
+      
+        
       </div>
 
       {/*Render Task List and Enable Delete */}
       {/*Pass tasks and onDelete */}
-      <TaskList /* tasks={tasks} onDelete={handleDelete} */ />
+      <TaskList  tasks={tasks} onDelete={handleDelete}  />
 
       {/*Clear All */}
       <div className="footerRow">

@@ -197,7 +197,7 @@ Make sure you have completed the following before submitting:
 - [ ] State updates do **not** use direct mutations (e.g., no `.push()`, `.splice()`, or direct editing of the state array).  
 - [ ] Code is properly indented, well-organized, and separated into components:  
   - `TaskApp.jsx` → state and handlers  
-  - `TaskList.jsx` → rendering of the task list  
+  - `TaskList.jsx` → rendering of the task list   
   - `TaskItem.jsx` → individual task and delete functionality  
 - [ ] Only the required tasks from the semester project are used as input:  
   - Make group  
