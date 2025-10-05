@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 
 export default function TaskApp() {
-  var text="";
-  var setText="";
   
-  [text, setText] = useState("");
-  
+  var [text, setText] = useState("");
+  var button = document.getElementsByClassName("btn btn--primary")
   const handleSubmit = (props) => {
+    
     setText = props.text;
    
   };
@@ -39,10 +38,19 @@ export default function TaskApp() {
           className="input"
           
           onKeyDown={(e) => {
-            if (e.key === "Enter") handleSubmit();
+            if (e.key === "Enter"){
+               handleSubmit();
+              
+            }
+            
           }}
+          
+          
         />
         <p>{text}</p>
+        
+        
+        
         <button className="btn btn--primary" onClick={handleSubmit}>
           Submit
         </button>
